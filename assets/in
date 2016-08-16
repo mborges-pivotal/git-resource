@@ -52,9 +52,13 @@ if test "$depth" -gt 0 2> /dev/null; then
   depthflag="--depth $depth"
 fi
 
-git clone --single-branch $depthflag $uri $branchflag $destination
+echo "#### uri=$uri   #### destination=$destination"
+git clone $uri $destination
+
+echo "#### done"
 
 cd $destination
+git checkout $branch
 
 git checkout -q $ref
 git lfs fetch

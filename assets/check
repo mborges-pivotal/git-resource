@@ -42,8 +42,13 @@ else
     branchflag="--branch $branch"
   fi
 
-  git clone --single-branch $uri $branchflag $destination
+  echo "#### uri=$uri   #### destination=$destination"
+  git clone $uri $destination
+  echo "#### done"
+
   cd $destination
+  git checkout $branch
+
 fi
 
 if [ -n "$ref" ] && git cat-file -e "$ref"; then
